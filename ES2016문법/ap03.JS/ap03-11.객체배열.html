@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>객체 배열 학습</title>
-    <link rel="stylesheet" href="../css/reset.css" />
-</head>
-
-<body>
-    <div>
-        <h2>Object Arrary 대해서 학습한다.</h2>
-        <ol>
-            <li class="langjs">
-                <h3 class="langjs">Object Arrary 생성</h3>
-                <pre class="langjs">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible"
+            content="ie=edge" />
+        <title>객체 배열 학습</title>
+        <link rel="stylesheet"
+            href="../css/reset.css" />
+    </head>
+    <body>
+        <div>
+            <h2>Object Arrary 대해서 학습한다.</h2>
+            <ol>
+                <li class="langjs">
+                    <h3 class="langjs">Object Arrary 생성</h3>
+                    <pre class="langjs">
                     <code class="langjs">
     var objarray = [
         { text: 'One', value: 'A' },
@@ -24,57 +25,114 @@
     ];
                     </code>
                 </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에 { text: 'Four', value: 'D' } 를 추가하시오.</h3>
-                <pre class="langjs">
+                </li>
+                <li class="langjs">
+                    <h3 class="langjs">objarray 에 { text: 'Four', value: 'D' } 를 추가하시오.</h3>
+                    <pre class="langjs">
                     <code class="langjs">
 
                     </code>
                 </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오.</h3>
-                <pre class="langjs">
+                </li>
+                <li class="langjs">
+                    <h3 class="langjs">objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오.</h3>
+                    <pre class="langjs">
                     <code class="langjs">
 
                     </code>
                 </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 filter 메서드를 사용하여 text의 값이 'One' 인 객체들을 찾으시오</h3>
-                <pre class="langjs">
+                </li>
+                <li class="langjs">
+                    <h3 class="langjs">objarray 에서 filter 메서드를 사용하여 text의 값이 'One' 인 객체들을 찾으시오</h3>
+                    <pre class="langjs">
                     <code class="langjs">
 
                     </code>
                 </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오.</h3>
-                <pre class="langjs">
+                </li>
+                <li class="langjs">
+                    <h3 class="langjs">objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오.</h3>
+                    <pre class="langjs">
                     <code class="langjs">
 
                     </code>
                 </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 map 메서드를 사용하여 no 프로퍼티 추가하시오</h3>
-                <pre class="langjs">
+                </li>
+                <li class="langjs">
+                    <h3 class="langjs">objarray 에서 map 메서드를 사용하여 no 프로퍼티 추가하시오</h3>
+                    <pre class="langjs">
                     <code class="langjs">
 
                     </code>
                 </pre>
-            </li>
-            <li class="langjs">
-                <h3 class="langjs">objarray 에서 reduce 메서드를 사용하여 각 요소의 value 프로퍼티 를 합쳐서 하나의 문자열로 만드시오</h3>
-                <pre class="langjs">
+                </li>
+                <li class="langjs">
+                    <h3 class="langjs">objarray 에서 reduce 메서드를 사용하여 각 요소의 value 프로퍼티 를 합쳐서 하나의 문자열로 만드시오</h3>
+                    <pre class="langjs">
                     <code class="langjs">
 
                     </code>
                 </pre>
-            </li>
-        </ol>
-    </div>
-</body>
-
+                </li>
+            </ol>
+        </div>
+    </body>
 </html>
+<script>
+    // 1 Object Array 생성
+    let objarray = [
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+    ];
+
+    // 2 objarray 에 {text: 'Four', value: 'D'} 추가
+    // push랑 동일
+    // objarray[objarray.length] = {text : 'Four', value : 'D'};
+    objarray.push({text : 'Four', value : 'D'});
+    console.log('2 ', objarray[objarray.length - 1]);
+
+    // 3 objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오.
+    // objarray[1]['text'] = '2';
+    // objarray[1]['value'] = '2';
+    // objarray[1] = {text : '2', value : '2'};
+    const findIndex = objarray.findIndex((item, index, array) => {
+        return item.text == 'Two';
+    });
+    objarray[findIndex] = {text : '2', value : '2'};
+    console.log('3 ', objarray);
+
+    // 4 objarray 에서 filter 메서드를 사용하여 text의 값이 'One' 인 객체들을 찾으시오
+    // var objFilter = objarray.filter(obj => obj['text'] == 'One');
+    const objFilter = objarray.filter((item, index, array) => {
+        return item.text == 'One';
+    });
+
+    console.log('4 ', objFilter);
+
+    // 5 objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오.
+    // objarray.splice(2, 1);
+    const deleteIndex = objarray.findIndex((item, index, array) => {
+        return item.text == 'Three' && item.value == 'C';
+    });
+    objarray.splice(deleteIndex, 1);
+    console.log('5 ', objarray);
+
+    // 6 objarray 에서 map 메서드를 사용하여 no 프로퍼티 추가하시오
+    const objMap = objarray.map( (item, index, array) => {
+        // item == {text: ???, value: ???};
+        // item.no = ??; item == {text: ???, value: ???, no: ???};
+        item.no = index;
+        return item;
+    });
+    // objarray - let으로 > var 전체 바꿀수 있음
+    objarray = objMap;
+    console.log('6 ', objarray);
+    console.log(objarray);
+
+    // 7 objarray 에서 reduce 메서드를 사용하여 각 요소의 value 프로퍼티 를 합쳐서 하나의 문자열로 만드시오
+    const objConcat = objarray.reduce((prevItem, currItem, index, array) => {
+        console.log(prevItem.value + currItem.value);
+        return prevItem.value + currItem.value;
+    });
+</script>

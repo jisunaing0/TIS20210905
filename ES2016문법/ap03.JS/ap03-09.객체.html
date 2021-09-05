@@ -244,4 +244,54 @@
     </body>
 </html>
 
-
+<script>
+    var foo = {
+        name : 'foo',
+        run : function () { return this.name; }
+    };
+
+    // 1 read
+    console.log('. ',foo.name);
+
+    //2 read
+    console.log('"" ', foo['name']);
+
+    // 3 create
+    foo['gender'] = "man";
+    console.log(foo['gender']);
+
+    // 4 update
+    foo['name'] = "bar";
+    console.log(foo['name']);
+
+    // 5 delete
+    delete foo.age;
+    delete foo.gender;
+    console.log(foo.age);
+    console.log(foo.gender);
+
+
+    // 문제1
+    var dog = {
+        name : 'Fido',
+        weght : 40,
+        breed : 'Mixed',
+        loves : ["walks", "fetching balls"]
+    };
+    console.log(dog);
+
+    // 문제2
+    var table = {
+        name : 'Nature of code',
+        price : 30000,
+        author : '다니엘',
+        ISBN : '9788968481901',
+        pages : '620페이지',
+        run : function() {
+            return this.name;
+        }
+    };
+    console.log('table ',  table);
+    console.log('table name > ', table.run());
+</script>
+
