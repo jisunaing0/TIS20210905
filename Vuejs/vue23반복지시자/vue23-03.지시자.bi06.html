@@ -55,16 +55,49 @@
                 </tr>
             </tbody>
         </table>
+        <label for="">이름</label><input v-model:value="name">
+        <label for="">전화번호</label><input v-model:value="tel">
+        <label for="">주소</label><input v-model:value="address">
+        <button v-on:click="addBtn">추가</button>
     </div>
 
 
-    
+
 
 </body>
 
 </html>
-
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+            name: '',
+            tel: '',
+            address: '',
+            contacts: [
+                {name: 'A', tel: '010-1111-1111', address: 'ADR1'},
+                {name: 'B', tel: '010-1111-2222', address: 'ADR2'}
+            ]
+        },
+        //template: ``,
+        methods: {
+            /* 이벤트 핸들러 등록 + 일반 함수 */
+            addBtn() {
+                this.$set(this.$data.contacts, this.$data.contacts.length, {name: this.$data.name, tel: this.$data.tel, address: this.$data.address});
+            }
+        },
+    });
+
+
+</script>
 
 
 
