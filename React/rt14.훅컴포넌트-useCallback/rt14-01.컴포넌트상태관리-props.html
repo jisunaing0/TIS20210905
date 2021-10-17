@@ -36,6 +36,9 @@
             const [parentText, setParentText] = useState('parent text'); // 상태값이 기본타입인 경우
             const [childMessage, setChildMessage] = useState(null); // 상태값이 기본타입인 경우
 
+            // 콜백 메서드의 연관 배열에는 사용되는 상태명을 기술
+            // 한 개를 사용하면 한 개를 적고
+            // 두 개를 사용하면 두 개를 적으시오
             const callbackChildText = useCallback( (text)=> {
                 console.log(text);
                 setChildMessage(text);
@@ -86,7 +89,71 @@
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from 'react-dom' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js">
+    /*  import ReactRedux, {Provider, useDispatch, useSelector} from 'react-redux' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.js">
+    /*  import ReactRouterDOM, {BroswerRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from 'react-router-dom' */
+</script>
+<script src="https://unpkg.com/immer">
+    /* 불변객체 state를 조작하는 라이브러리. import immer from 'immer' */
+</script>
+<script type="text/babel">
+    import React from 'react'
+
+    function Parent(props) {
+            // 컴포넌트의 상태값 설정
+            const [parentText, setParentText] = useState('parent text'); // 상태값이 기본타입인 경우
+            const [childMessage, setChildMessage] = useState(null); // 상태값이 기본타입인 경우
+
+            // 콜백 메서드의 연관 배열에는 사용되는 상태명을 기술
+            // 한 개를 사용하면 한 개를 적고
+            // 두 개를 사용하면 두 개를 적으시오
+            const callbackChildText = useCallback( (text)=> {
+                console.log(text);
+                setChildMessage(text);
+            });
+
+            // JSX로 화면 만들기
+            return (
+                <div>
+                    <Child callbackChildText={callbackChildText} parentText={parentText}></Child>
+                    <br />
+                    {childMessage}
+                </div>
+            )
+        };
+
+       // 자식 컴포넌트
+        function Child(props) {
+            // 컴포넌트의 상태값 설정
+            const [childText, setChildText] = useState('child text'); // 상태값이 기본타입인 경우
+
+            function handlerChild() {
+                props.callbackChildText(childText);
+            }
+
+            // JSX로 화면 만들기
+            return (
+                    <div>
+                        {props.parentText}
+                        <br />
+                        <button onClick={handlerChild}>button</button>
+                    </div>
+            )
+        };
+
+</script>
 
 
 
-
+
